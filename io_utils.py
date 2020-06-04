@@ -27,3 +27,7 @@ def mime_from_img(img, format_str="png"):
     b64str = b64_from_img(img, format_str=format_str)
     mimestr = ",".join([mimefmt, b64str])
     return mimestr
+
+def mime_from_img_path(img_path, format_str="png"):
+    img=skimage.io.imread(img_path)
+    return mime_from_img(img,format_str=format_str)

@@ -6,30 +6,63 @@ import skimage.io
 import skimage.transform
 import io_utils
 
+DEFAULT_IMAGE='assets/Euchondrus_septemdentatus_01.JPG'
+
 app = dash.Dash(__name__)
 
 app.layout = html.Div(
-    id="main",
+    id="root",
     children=[
-        html.H1("Image Processing Template"),
-        html.H2("Made with Dash and scikit-image"),
-        html.P(children=[
-            "This shows how an app for processing images can be made in ~100 lines of code with Dash and scikit-image. You can add your image processing algorithm by cloning this app: ",
-            html.A("https://github.com/plotly/dash-simple-image-processor",
-                    href="https://github.com/plotly/dash-simple-image-processor"),
-            ". Learn more about ",
-            html.A("Dash",href='https://plotly.com/dash/'),
-            " and ",
-            html.A("scikit-image",href="https://scikit-image.org/"),
-            "."]),
-        dcc.Upload(id="uploader", children=html.Button("Load Image"), multiple=False),
-        html.A(
-            id="downloader", download="image.png", children=[html.Button("Save Image")]
+        html.Div(
+            id="main",
+            children=[
+                html.Img(
+                    id="logo", src="assets/dash-logo-new.png", alt="Plotly Inc. Logo"
+                ),
+                html.Div(
+                    id="banner",
+                    children=[
+                        html.H1("Image processing template made with Dash and scikit-image"),
+                    ],
+                ),
+                html.Img(id="image-display", alt="The transformed image"),
+                html.Div(id='buttons',
+                children=[
+                dcc.Upload(
+                    id="uploader", children=html.Button("Load Image"), multiple=False,
+                    className="inline_button",
+                ),
+                html.A(
+                    id="downloader",
+                    download="image.png",
+                    children=[html.Button("Save Image")],
+                ),
+                ]),
+                html.H6("Rotation (degrees)", id="rotation-display"),
+                dcc.Slider(id="rotation-slider", min=0, max=360, step=0.01, value=0),
+                dcc.Store(id="input-image",
+                data=io_utils.mime_from_img_path(DEFAULT_IMAGE)),
+            ],
         ),
-        html.H6("Rotation (degrees)", id="rotation-display"),
-        dcc.Slider(id="rotation-slider", min=0, max=360, step=0.01, value=0,),
-        html.Img(id="image-display", alt="The transformed image"),
-        dcc.Store(id="input-image", data=None),
+        html.Div(
+            id="footer",
+            children=[
+                html.P(
+                    children=[
+                        "This shows how an app for processing images can be made in ~100 lines of code with Dash and scikit-image. You can add your image processing algorithm by cloning this app: ",
+                        html.A(
+                            "https://github.com/plotly/dash-simple-image-processor",
+                            href="https://github.com/plotly/dash-simple-image-processor",
+                        ),
+                        ". Learn more about ",
+                        html.A("Dash", href="https://plotly.com/dash/"),
+                        " and ",
+                        html.A("scikit-image", href="https://scikit-image.org/"),
+                        ".",
+                    ]
+                ),
+            ],
+        ),
     ],
 )
 

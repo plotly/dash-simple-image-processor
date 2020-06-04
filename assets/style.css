@@ -1,0 +1,38 @@
+@font-face {
+    font-family: SwanseaRegular;
+    src: url('swansea/Swansea-q3pd.ttf')
+}
+
+body {
+    background-color: DarkSlateGray;
+    color: lightgray;
+    font-family: SwanseaRegular;
+    line-height: 1.6;
+    padding: 0;
+    margin: 0;
+}
+
+#main {
+    padding: 3px;
+}
+    
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    font-size: small;
+    background-color: Black;
+    padding: 3px;
+}
+
+#buttons {
+    width=100%;
+}
+
+.inline_button {
+    display: inline;
+}
+
+#uploader {
+    display: inline;
+}
