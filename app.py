@@ -11,6 +11,17 @@ app = dash.Dash(__name__)
 app.layout = html.Div(
     id="main",
     children=[
+        html.H1("Image Processing Template"),
+        html.H2("Made with Dash and scikit-image"),
+        html.P(children=[
+            "This shows how an app for processing images can be made in ~100 lines of code with Dash and scikit-image. You can add your image processing algorithm by cloning this app: ",
+            html.A("https://github.com/plotly/dash-simple-image-processor",
+                    href="https://github.com/plotly/dash-simple-image-processor"),
+            ". Learn more about ",
+            html.A("Dash",href='https://plotly.com/dash/'),
+            " and ",
+            html.A("scikit-image",href="https://scikit-image.org/"),
+            "."]),
         dcc.Upload(id="uploader", children=html.Button("Load Image"), multiple=False),
         html.A(
             id="downloader", download="image.png", children=[html.Button("Save Image")]
