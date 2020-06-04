@@ -7,6 +7,11 @@ import skimage.transform
 import io_utils
 import plotly.graph_objects as go
 
+DBG_VERBOSE=False
+
+def debug_print(s):
+    if DBG_VERBOSE:
+        print(s)
 
 def plot_image(mimeimg=None, width=300, height=500):
     fig = go.Figure()
@@ -36,6 +41,7 @@ def plot_image(mimeimg=None, width=300, height=500):
         showticklabels=False,
         zeroline=False,
     )
+    fig.update_layout({'dragmode':False})
     return fig
 
 
@@ -90,7 +96,7 @@ def store_uploader_contents(uploader_contents):
 def process_image(input_image_data, rotation_slider_value):
     if input_image_data is None or rotation_slider_value is None:
         return dash.no_update
-    print(input_image_data)
+    debug_print(input_image_data)
     im = io_utils.img_from_mime(input_image_data)
 
     # process the image here...
