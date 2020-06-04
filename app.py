@@ -3,6 +3,7 @@ from dash.dependencies import Input, Output, State, ClientsideFunction
 import dash_html_components as html
 import dash_core_components as dcc
 import skimage.io
+import skimage.transform
 import base64
 import io
 import io_utils
@@ -20,15 +21,17 @@ app.layout=html.Div(
         id='downloader',
         download='image.png',
         children=[html.Button('Save Image')]),
-		dcc.Slider(
-			id='rotation-slider',
-			min=0,
-			max=360,
-			step=0.5,
-			value=0,
-		),
-        dcc.Store(id='input-image',data={}),
-        dcc.Store(id='output-image',data={})
+        html.H6("Rotation (degrees)",id="rotation-display"),
+        dcc.Slider(
+            id='rotation-slider',
+            min=0,
+            max=360,
+            step=0.01,
+            value=0,
+        ),
+        html.Img(id='image-display',alt="The transformed image"),
+        dcc.Store(id='input-image',data=None),
+        dcc.Store(id='output-image',data=None)
 
     ]
 )
@@ -39,18 +42,26 @@ Output('input-image','data'),
 def store_uploader_contents(uploader_contents):
     if uploader_contents is None:
         return dash.no_update
-    return {'img':uploader_contents}
+    return uploader_contents
 
 @app.callback(
-Output('output-image','data'),
+[Output('output-image','data'),
+ Output('image-display','src'),
+ Output('downloader','href'),
+ Output('rotation-display','children')],
 [Input('input-image','data'),
  Input('rotation-slider','value')])
-    imdata=uploader_contents.split(",")[-1]
-    im=io_utils.img_from_b64(imdata)
+def process_image(input_image_data,rotation_slider_value):
+    if input_image_data is None or rotation_slider_value is None:
+        return dash.no_update
+    print(input_image_data)
+    im=io_utils.img_from_mime(input_image_data)
+
     # process the image here...
-    # write the image
-	imb64=io_utils.b64_from_img(im)
-	return {'img':imb64}
+    im=skimage.transform.rotate(im,rotation_slider_value,resize=True)
+
+    mimestr=io_utils.mime_from_img(im)
+    return (mimestr,mimestr,mimestr,"Rotation: %.2f\u00B0" % rotation_slider_value)
 
 if __name__ == "__main__":
     app.run_server(debug=True)
