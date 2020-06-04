@@ -31,7 +31,6 @@ app.layout=html.Div(
         ),
         html.Img(id='image-display',alt="The transformed image"),
         dcc.Store(id='input-image',data=None),
-        dcc.Store(id='output-image',data=None)
 
     ]
 )
@@ -45,8 +44,7 @@ def store_uploader_contents(uploader_contents):
     return uploader_contents
 
 @app.callback(
-[Output('output-image','data'),
- Output('image-display','src'),
+[Output('image-display','src'),
  Output('downloader','href'),
  Output('rotation-display','children')],
 [Input('input-image','data'),
@@ -61,7 +59,7 @@ def process_image(input_image_data,rotation_slider_value):
     im=skimage.transform.rotate(im,rotation_slider_value,resize=True)
 
     mimestr=io_utils.mime_from_img(im)
-    return (mimestr,mimestr,mimestr,"Rotation: %.2f\u00B0" % rotation_slider_value)
+    return (mimestr,mimestr,"Rotation: %.2f\u00B0" % rotation_slider_value)
 
 if __name__ == "__main__":
     app.run_server(debug=True)
