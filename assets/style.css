@@ -36,8 +36,7 @@ body, html {
 }
 
 #buttons {
-    width=100%;
-    display: block;
+    width=50%;
 }
 
 .inline_button {
@@ -49,10 +48,26 @@ body, html {
 }
 
 #image-display {
-    height: 33%;
+    height: 100%;
+    display: inline;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%,0);
 }
 
 #app-contents {
     padding: 5px;
     display: block;
+}
+
+#image-container {
+    height: 33%;
+    position: relative;
+    background-color: black;
+    width: 50%;
+}
+
+#rotation-slider {
+    display: inline-block;
+    width:25%;
 }
