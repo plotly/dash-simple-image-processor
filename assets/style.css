@@ -36,7 +36,18 @@ body, html {
 }
 
 #buttons {
-    width=50%;
+    width=100%;
+    display: block;
+}
+
+#controls {
+    width: 100%;
+    height: 10%;
+    display: inline;
+    position: absolute;
+    margin: 0;
+    background-color: grey;
+    bottom: 0;
 }
 
 .inline_button {
@@ -61,13 +72,23 @@ body, html {
 }
 
 #image-container {
-    height: 33%;
     position: relative;
     background-color: black;
-    width: 50%;
+    width: 100%;
+    height: 90%;
 }
 
 #rotation-slider {
     display: inline-block;
     width:25%;
+}
+
+#image-controls-container {
+    width:75%;
+    height:50%;
+    position: relative;
+}
+
+#rotation-display {
+    display: inline;
 }

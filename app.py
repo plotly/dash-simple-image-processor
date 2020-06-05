@@ -27,6 +27,7 @@ app.layout = html.Div(
                         ),
                     ],
                 ),
+                html.Div(id="image-controls-container",children=[
                 html.Div(
                     id="image-container",
                     children=[
@@ -34,23 +35,28 @@ app.layout = html.Div(
                     ],
                 ),
                 html.Div(
-                    id="buttons",
-                    children=[
-                        dcc.Upload(
-                            id="uploader",
-                            children=html.Button("Load Image"),
-                            multiple=False,
-                            className="inline_button",
-                        ),
-                        html.A(
-                            id="downloader",
-                            download="image.png",
-                            children=[html.Button("Save Image")],
-                        ),
-                        dcc.Slider(id="rotation-slider", min=0, max=360, step=0.01, value=0),
-                    ],
+                    id="controls",
+                    children=[html.Div(
+                        id="buttons",
+                        children=[
+                            dcc.Upload(
+                                id="uploader",
+                                children=html.Button("Load Image"),
+                                multiple=False,
+                                className="inline_button",
+                            ),
+                            html.A(
+                                id="downloader",
+                                download="image.png",
+                                children=[html.Button("Save Image")],
+                            ),
+                        ],
+                    ),
+                    html.H6("Rotation (degrees)", id="rotation-display"),
+                    dcc.Slider(id="rotation-slider", min=0, max=360, step=0.01, value=0),
+                    ]
                 ),
-                html.H6("Rotation (degrees)", id="rotation-display"),
+                ]),
                 dcc.Store(
                     id="input-image", data=io_utils.mime_from_img_path(DEFAULT_IMAGE)
                 ),
