@@ -3,7 +3,7 @@
     src: url('swansea/Swansea-q3pd.ttf')
 }
 
-body {
+body, html {
     background-color: DarkSlateGray;
     color: lightgray;
     font-family: SwanseaRegular;
@@ -12,21 +12,32 @@ body {
     margin: 0;
 }
 
+#root {
+    position: fixed;
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
 #main {
-    padding: 3px;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
     
 
 #footer {
-    position: absolute;
-    bottom: 0;
     font-size: small;
     background-color: Black;
     padding: 3px;
+    display: block;
+    bottom: 0;
+    position: absolute;
 }
 
 #buttons {
     width=100%;
+    display: block;
 }
 
 .inline_button {
@@ -35,4 +46,13 @@ body {
 
 #uploader {
     display: inline;
+}
+
+#image-display {
+    height: 33%;
+}
+
+#app-contents {
+    padding: 5px;
+    display: block;
 }

@@ -25,7 +25,8 @@ app.layout = html.Div(
                         html.H1("Image processing template made with Dash and scikit-image"),
                     ],
                 ),
-                html.Img(id="image-display", alt="The transformed image"),
+                html.Img(id="image-display",
+                         alt="The transformed image"),
                 html.Div(id='buttons',
                 children=[
                 dcc.Upload(
@@ -42,8 +43,6 @@ app.layout = html.Div(
                 dcc.Slider(id="rotation-slider", min=0, max=360, step=0.01, value=0),
                 dcc.Store(id="input-image",
                 data=io_utils.mime_from_img_path(DEFAULT_IMAGE)),
-            ],
-        ),
         html.Div(
             id="footer",
             children=[
@@ -63,6 +62,9 @@ app.layout = html.Div(
                 ),
             ],
         ),
+            ],
+        ),
+
     ],
 )
 
@@ -92,7 +94,7 @@ def process_image(input_image_data, rotation_slider_value):
     im = skimage.transform.rotate(im, rotation_slider_value, resize=True)
 
     mimestr = io_utils.mime_from_img(im)
-    return (mimestr, mimestr, "Rotation: %.2f\u00B0" % rotation_slider_value)
+    return (mimestr,  mimestr, "Rotation: %.2f\u00B0" % rotation_slider_value)
 
 
 if __name__ == "__main__":
