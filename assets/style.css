@@ -50,6 +50,13 @@ body, html {
     bottom: 0;
 }
 
+/* Center all children of controls vertically */
+#controls > * {
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
 .inline_button {
     display: inline;
 }
@@ -81,6 +88,9 @@ body, html {
 #rotation-slider {
     display: inline-block;
     width:25%;
+    right: 0;
+    /* we have to use !important because slider specifies padding inline */
+    padding: 0 !important;
 }
 
 #image-controls-container {

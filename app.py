@@ -36,9 +36,7 @@ app.layout = html.Div(
                 ),
                 html.Div(
                     id="controls",
-                    children=[html.Div(
-                        id="buttons",
-                        children=[
+                    children=[
                             dcc.Upload(
                                 id="uploader",
                                 children=html.Button("Load Image"),
@@ -50,9 +48,7 @@ app.layout = html.Div(
                                 download="image.png",
                                 children=[html.Button("Save Image")],
                             ),
-                        ],
-                    ),
-                    html.H6("Rotation (degrees)", id="rotation-display"),
+                    html.Div("Rotation (degrees)", id="rotation-display"),
                     dcc.Slider(id="rotation-slider", min=0, max=360, step=0.01, value=0),
                     ]
                 ),
