@@ -15,6 +15,8 @@ DEFAULT_IMAGE = "assets/Euchondrus_septemdentatus_01.JPG"
 
 app = dash.Dash(__name__)
 
+server=app.server
+
 app.layout = html.Div(
     id="root",
     children=[
@@ -125,7 +127,6 @@ def store_uploader_contents(uploader_contents):
 def process_image(input_image_data, rotation_slider_value):
     if input_image_data is None or rotation_slider_value is None:
         return dash.no_update
-    print(input_image_data)
     im = io_utils.img_from_mime(input_image_data)
 
     # process the image here...
