@@ -22,10 +22,11 @@ body, html {
 #main {
     display: flex;
     flex-direction: row;
+    height: 100%;
 }
 
-#results-container {
-
+#results-container, #sidebar {
+    flex-grow: 1;
 }
 
 #buttons {
