@@ -44,87 +44,41 @@ body, html {
     margin-block-end: 0.67em;
 }
 
-#buttons {
+#image-controls-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+#image-container {
     width: 100%;
-    display: block;
+}
+
+#image-display {
+    margin: 0 auto;
 }
 
 #controls {
     width: 100%;
-    height: 10%;
-    display: inline;
-    position: absolute;
-    margin: 0;
+    height: 20px;
     background-color: grey;
-    bottom: 0;
-}
-
-/* Center all children of controls vertically */
-.control-wrapper > * {
-    height: 100%;
-    display: inline-block;
-}
-
-.inline_button {
-    display: inline;
-}
-
-#uploader {
-    display: inline;
-}
-
-#image-display {
-    height: 100%;
-    display: inline;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,0);
-}
-
-#app-contents {
-    padding: 5px;
-    display: block;
-}
-
-#image-container {
-    position: relative;
-    background-color: black;
-    width: 100%;
-    height: 90%;
-}
-
-#rotation-slider {
-    position: absolute;
-    top: 50%;
-    transform: translate(0,-50%);
-    display: inline-block;
-    width:50%;
-    right: 0;
-    /* we have to use !important because slider specifies padding inline */
-    padding: 0 !important;
-}
-
-#image-controls-container {
-    margin-top: 50px;
-    width:75%;
-    height:50%;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%,0);
-}
-
-#rotation-display {
-    display: inline-block;
-    position: relative;
-    text-align: center;
 }
 
 .control-wrapper {
     display: inline-block;
-    top: 50%;
-    position: relative;
-    transform: translate(0,-50%);
     user-select: none;
+}
+
+#rotation-slider {
+    display: inline-block;
+    width:50%;
+    padding: 0 !important;
+}
+
+#rotation-display {
+    display: inline-block;
+    text-align: center;
 }
 
 #sidebar {
