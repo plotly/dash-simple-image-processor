@@ -109,9 +109,6 @@ body, html {
 
 #sidebar {
     font-size: small;
-    background-color: Black;
-    padding: 3px;
-    display: block;
-    bottom: 0;
-    position: absolute;
+    background-color: #4b7071;
+    padding: 20px;
 }
