@@ -29,6 +29,10 @@ body, html {
     flex-grow: 1;
 }
 
+#results-container {
+    width: 70%;
+}
+
 #buttons {
     width: 100%;
     display: block;
@@ -115,5 +119,5 @@ body, html {
     font-size: small;
     background-color: #4b7071;
     padding: 20px;
-    width: 250px;
+    width: 30%;
 }
