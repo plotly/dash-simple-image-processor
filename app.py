@@ -24,12 +24,9 @@ app.layout = html.Div(
             id="main",
             children=[
                 html.Div(id="result-container", children=[
-                    html.H1(id="header", children=[
-                        html.Img(
-                            id="logo", src="assets/dash-logo-new.png", alt="Plotly Inc. Logo"
-                        ),
-                        html.Div(id="title", children=["Image processing template made with Dash and scikit-image"])
-                    ]),
+                    html.Img(
+                        id="logo", src="assets/dash-logo-new.png", alt="Plotly Inc. Logo"
+                    ),
                     html.Div(
                         id="image-controls-container",
                         children=[
@@ -82,6 +79,9 @@ app.layout = html.Div(
                 html.Div(
                     id="sidebar",
                     children=[
+                        html.H1(id="title", children=[
+                            "Image processing template made with Dash and scikit-image"
+                        ]),
                         html.P(
                             children=[
                                 "This shows how an app for processing images can be made in ~100 lines of code with Dash and scikit-image. You can add your image processing algorithm by modifying this this app, which you can obtain here: ",

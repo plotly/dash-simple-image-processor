@@ -29,8 +29,12 @@ body, html {
     flex-grow: 1;
 }
 
-#results-container {
+#result-container {
     width: 70%;
+}
+
+#header {
+    display: flex;
 }
 
 #logo {
