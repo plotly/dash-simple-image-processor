@@ -24,17 +24,12 @@ app.layout = html.Div(
             id="main",
             children=[
                 html.Div(id="result-container", children=[
-                    html.Img(
-                        id="logo", src="assets/dash-logo-new.png", alt="Plotly Inc. Logo"
-                    ),
-                    html.Div(
-                        id="banner",
-                        children=[
-                            html.H1(
-                                "Image processing template made with Dash and scikit-image"
-                            ),
-                        ],
-                    ),
+                    html.H1(id="header", children=[
+                        html.Img(
+                            id="logo", src="assets/dash-logo-new.png", alt="Plotly Inc. Logo"
+                        ),
+                        "Image processing template made with Dash and scikit-image"
+                    ]),
                     html.Div(
                         id="image-controls-container",
                         children=[
