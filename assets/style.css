@@ -33,6 +33,10 @@ body, html {
     width: 70%;
 }
 
+#logo {
+    width: 200px;
+}
+
 #buttons {
     width: 100%;
     display: block;
