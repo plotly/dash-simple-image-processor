@@ -28,7 +28,7 @@ app.layout = html.Div(
                         html.Img(
                             id="logo", src="assets/dash-logo-new.png", alt="Plotly Inc. Logo"
                         ),
-                        "Image processing template made with Dash and scikit-image"
+                        html.Div(id="title", children=["Image processing template made with Dash and scikit-image"])
                     ]),
                     html.Div(
                         id="image-controls-container",
