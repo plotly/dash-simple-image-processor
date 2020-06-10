@@ -23,6 +23,7 @@ body, html {
     display: flex;
     flex-direction: row;
     height: 100%;
+    overflow-y: auto;
 }
 
 #result-container, #sidebar {
@@ -89,7 +90,6 @@ body, html {
     #main {
         display: flex;
         flex-direction: column;
-        overflow-y: auto;
     }
     #result-container, #sidebar {
         flex-grow: initial;
