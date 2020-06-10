@@ -23,62 +23,64 @@ app.layout = html.Div(
         html.Div(
             id="main",
             children=[
-                html.Img(
-                    id="logo", src="assets/dash-logo-new.png", alt="Plotly Inc. Logo"
-                ),
-                html.Div(
-                    id="banner",
-                    children=[
-                        html.H1(
-                            "Image processing template made with Dash and scikit-image"
-                        ),
-                    ],
-                ),
-                html.Div(
-                    id="image-controls-container",
-                    children=[
-                        html.Div(
-                            id="image-container",
-                            children=[
-                                html.Img(
-                                    id="image-display", alt="The transformed image"
-                                ),
-                            ],
-                        ),
-                        html.Div(
-                            id="controls",
-                            children=[
-                                wrap_div(
-                                    dcc.Upload(
-                                        id="uploader",
-                                        children=html.Button("Load Image"),
-                                        multiple=False,
-                                        className="inline_button",
-                                    )
-                                ),
-                                wrap_div(
-                                    html.A(
-                                        id="downloader",
-                                        download="image.png",
-                                        children=[html.Button("Save Image")],
-                                    )
-                                ),
-                                wrap_div(
-                                    html.Div(
-                                        "Rotation (degrees)", id="rotation-display"
-                                    )
-                                ),
-                                dcc.Slider(
-                                    id="rotation-slider",
-                                    min=0,
-                                    max=360,
-                                    step=0.01,
-                                    value=0,
-                                ),
-                            ],
-                        ),
-                    ],
-                ),
+                html.Div(id="result-container", children=[
+                    html.Img(
+                        id="logo", src="assets/dash-logo-new.png", alt="Plotly Inc. Logo"
+                    ),
+                    html.Div(
+                        id="banner",
+                        children=[
+                            html.H1(
+                                "Image processing template made with Dash and scikit-image"
+                            ),
+                        ],
+                    ),
+                    html.Div(
+                        id="image-controls-container",
+                        children=[
+                            html.Div(
+                                id="image-container",
+                                children=[
+                                    html.Img(
+                                        id="image-display", alt="The transformed image"
+                                    ),
+                                ],
+                            ),
+                            html.Div(
+                                id="controls",
+                                children=[
+                                    wrap_div(
+                                        dcc.Upload(
+                                            id="uploader",
+                                            children=html.Button("Load Image"),
+                                            multiple=False,
+                                            className="inline_button",
+                                        )
+                                    ),
+                                    wrap_div(
+                                        html.A(
+                                            id="downloader",
+                                            download="image.png",
+                                            children=[html.Button("Save Image")],
+                                        )
+                                    ),
+                                    wrap_div(
+                                        html.Div(
+                                            "Rotation (degrees)", id="rotation-display"
+                                        )
+                                    ),
+                                    dcc.Slider(
+                                        id="rotation-slider",
+                                        min=0,
+                                        max=360,
+                                        step=0.01,
+                                        value=0,
+                                    ),
+                                ],
+                            ),
+                        ],
+                    )
+                ]),
                 dcc.Store(
                     id="input-image", data=io_utils.mime_from_img_path(DEFAULT_IMAGE)
                 ),
