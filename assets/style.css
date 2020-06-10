@@ -93,6 +93,7 @@ body, html {
     #main {
         display: flex;
         flex-direction: column;
+        overflow-y: auto;
     }
     #result-container, #sidebar {
         flex-grow: initial;
