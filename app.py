@@ -83,7 +83,7 @@ app.layout = html.Div(
                     id="input-image", data=io_utils.mime_from_img_path(DEFAULT_IMAGE)
                 ),
                 html.Div(
-                    id="footer",
+                    id="sidebar",
                     children=[
                         html.P(
                             children=[
