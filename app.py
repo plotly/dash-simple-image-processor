@@ -44,7 +44,8 @@ app.layout = html.Div(
                                     wrap_div(
                                         dcc.Upload(
                                             id="uploader",
-                                            children=html.Button("Load Image"),
+                                            children=html.Button(
+                                                html.Img(src="assets/Upload_icon_-_Font_Awesome_-_Red.svg",className='button-image')),
                                             multiple=False,
                                             className="inline_button",
                                         )
@@ -53,7 +54,7 @@ app.layout = html.Div(
                                         html.A(
                                             id="downloader",
                                             download="image.png",
-                                            children=[html.Button("Save Image")],
+                                            children=[html.Button(html.Img(src="assets/Download_icon_-_Font_Awesome_-_Red.svg",className='button-image'),className="inline_button")],
                                         )
                                     ),
                                     wrap_div(
@@ -131,6 +132,13 @@ def process_image(input_image_data, rotation_slider_value):
 
     mimestr = io_utils.mime_from_img(im)
     return (mimestr, mimestr, "Rotation: %.2f\u00B0" % rotation_slider_value)
+
+credits="""
+Upload and download icons based on:
+https://commons.wikimedia.org/wiki/File:Upload_icon_-_Font_Awesome_-_Red.svg
+Image of shells from:
+https://commons.wikimedia.org/wiki/File:Euchondrus_septemdentatus_01.JPG
+"""
 
 
 if __name__ == "__main__":

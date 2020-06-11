@@ -85,7 +85,9 @@ body, html {
 #rotation-display {
     display: inline-block;
     text-align: center;
-    padding-left: 10px;
+    position: absolute;
+    top: 50%;
+    transform: translate(10px,-50%);
 }
 
 #sidebar {
@@ -93,6 +95,10 @@ body, html {
     background-color: #4b7071;
     padding: 20px;
     width: 30%;
+}
+
+.button-image {
+    width: 20px;
 }
  
 /* MOBILE VIEW */
