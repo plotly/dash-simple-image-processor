@@ -109,6 +109,13 @@ body, html {
     }
     #result-container, #sidebar {
         flex-grow: initial;
+        width: 96%;
+    }
+    #image-controls-container {
         width: 100%;
+    }
+    #image-container img {
+        width: 100%;
+        height: auto;
     }
 }
