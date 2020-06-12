@@ -58,6 +58,7 @@ body, html {
 
 #image-container img {
     height: 70vh;
+	object-fit: contain;
 }
 
 #controls {
@@ -100,6 +101,19 @@ body, html {
 .button-image {
     width: 20px;
 }
+
+a {
+    color: #9de8cb;
+}
+
+a:visited, a:hover {
+    color: #6fb7b6;
+}
+
+.rc-slider-track {
+	/* color of active part of slider */
+	background-color: #9de8cb;
+}
  
 /* MOBILE VIEW */
 @media only screen and (max-width: 1310px) {
@@ -116,6 +130,7 @@ body, html {
     }
     #image-container img {
         width: 100%;
-        height: auto;
     }
 }
+
+
