@@ -20,99 +20,117 @@ body, html {
 }
 
 #main {
-    display: block;
-    width: 100%;
+    display: flex;
+    flex-direction: row;
     height: 100%;
-}
-    
-
-#footer {
-    font-size: small;
-    background-color: Black;
-    padding: 3px;
-    display: block;
-    bottom: 0;
-    position: absolute;
+    overflow-y: auto;
 }
 
-#buttons {
-    width=100%;
-    display: block;
+#result-container, #sidebar {
+    flex-grow: 1;
+}
+
+#result-container {
+    padding: 20px;
+    width: 70%;
+}
+
+#header {
+    display: flex;
+}
+
+#logo {
+    width: 200px;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+}
+
+#image-controls-container {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    background-color: black;
+}
+
+#image-container {
+    margin: 0 auto;
+}
+
+#image-container img {
+    height: 70vh;
+	object-fit: contain;
 }
 
 #controls {
     width: 100%;
-    height: 10%;
-    display: inline;
-    position: absolute;
-    margin: 0;
+    /*height: 20px;*/
     background-color: grey;
-    bottom: 0;
-}
-
-/* Center all children of controls vertically */
-.control-wrapper > * {
-    height: 100%;
-    display: inline-block;
-}
-
-.inline_button {
-    display: inline;
-}
-
-#uploader {
-    display: inline;
-}
-
-#image-display {
-    height: 100%;
-    display: inline;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,0);
-}
-
-#app-contents {
-    padding: 5px;
-    display: block;
-}
-
-#image-container {
     position: relative;
-    background-color: black;
-    width: 100%;
-    height: 90%;
-}
-
-#rotation-slider {
-    position: absolute;
-    top: 50%;
-    transform: translate(0,-50%);
-    display: inline-block;
-    width:50%;
-    right: 0;
-    /* we have to use !important because slider specifies padding inline */
-    padding: 0 !important;
-}
-
-#image-controls-container {
-    width:75%;
-    height:50%;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%,0);
-}
-
-#rotation-display {
-    display: inline-block;
-    position: relative;
-    text-align: center;
 }
 
 .control-wrapper {
     display: inline-block;
-    top: 50%;
-    position: relative;
-    transform: translate(0,-50%);
     user-select: none;
 }
+
+#rotation-slider {
+    display: inline-block;
+    width:50%;
+    padding: 0 !important;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translate(0,-50%);
+}
+
+#rotation-display {
+    display: inline-block;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    transform: translate(10px,-50%);
+}
+
+#sidebar {
+    font-size: small;
+    background-color: #4b7071;
+    padding: 20px;
+    width: 30%;
+}
+
+.button-image {
+    width: 20px;
+}
+
+a {
+    color: #9de8cb;
+}
+
+a:visited, a:hover {
+    color: #6fb7b6;
+}
+
+.rc-slider-track {
+	/* color of active part of slider */
+	background-color: #9de8cb;
+}
+ 
+/* MOBILE VIEW */
+@media only screen and (max-width: 1310px) {
+    #main {
+        display: flex;
+        flex-direction: column;
+    }
+    #result-container, #sidebar {
+        flex-grow: initial;
+        width: 96%;
+    }
+    #image-controls-container {
+        width: 100%;
+    }
+    #image-container img {
+        width: 100%;
+    }
+}
+
+

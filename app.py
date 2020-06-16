@@ -15,7 +15,7 @@ DEFAULT_IMAGE = "assets/Euchondrus_septemdentatus_01.JPG"
 
 app = dash.Dash(__name__)
 
-server=app.server
+server = app.server
 
 app.layout = html.Div(
     id="root",
@@ -23,57 +23,74 @@ app.layout = html.Div(
         html.Div(
             id="main",
             children=[
-                html.Img(
-                    id="logo", src="assets/dash-logo-new.png", alt="Plotly Inc. Logo"
-                ),
                 html.Div(
-                    id="banner",
+                    id="result-container",
                     children=[
-                        html.H1(
-                            "Image processing template made with Dash and scikit-image"
-                        ),
-                    ],
-                ),
-                html.Div(
-                    id="image-controls-container",
-                    children=[
-                        html.Div(
-                            id="image-container",
-                            children=[
-                                html.Img(
-                                    id="image-display", alt="The transformed image"
-                                ),
-                            ],
+                        html.Img(
+                            id="logo",
+                            src="assets/dash-logo-new.png",
+                            alt="Plotly Inc. Logo",
                         ),
                         html.Div(
-                            id="controls",
+                            id="image-controls-container",
                             children=[
-                                wrap_div(
-                                    dcc.Upload(
-                                        id="uploader",
-                                        children=html.Button("Load Image"),
-                                        multiple=False,
-                                        className="inline_button",
-                                    )
+                                html.Div(
+                                    id="image-container",
+                                    children=[
+                                        html.Img(
+                                            id="image-display",
+                                            alt="The transformed image",
+                                        ),
+                                    ],
                                 ),
-                                wrap_div(
-                                    html.A(
-                                        id="downloader",
-                                        download="image.png",
-                                        children=[html.Button("Save Image")],
-                                    )
-                                ),
-                                wrap_div(
-                                    html.Div(
-                                        "Rotation (degrees)", id="rotation-display"
-                                    )
-                                ),
-                                dcc.Slider(
-                                    id="rotation-slider",
-                                    min=0,
-                                    max=360,
-                                    step=0.01,
-                                    value=0,
+                                html.Div(
+                                    id="controls",
+                                    children=[
+                                        wrap_div(
+                                            dcc.Upload(
+                                                id="uploader",
+                                                children=html.Button(
+                                                    title="Upload image",
+                                                    children=html.Img(
+                                                        src="assets/Upload_icon_-_Font_Awesome_-_Red.svg",
+                                                        className="button-image",
+                                                    ),
+                                                ),
+                                                multiple=False,
+                                                className="inline_button",
+                                            )
+                                        ),
+                                        wrap_div(
+                                            html.A(
+                                                id="downloader",
+                                                download="image.png",
+                                                children=[
+                                                    html.Button(
+                                                        title="Download image",
+                                                        children=html.Img(
+                                                            src="assets/Download_icon_-_Font_Awesome_-_Red.svg",
+                                                            className="button-image",
+                                                        ),
+                                                        className="inline_button",
+                                                    )
+                                                ],
+                                            )
+                                        ),
+                                        wrap_div(
+                                            html.Div(
+                                                "Rotation (degrees)",
+                                                id="rotation-display",
+                                                title="Adjust image rotation with slider",
+                                            )
+                                        ),
+                                        dcc.Slider(
+                                            id="rotation-slider",
+                                            min=0,
+                                            max=360,
+                                            step=0.01,
+                                            value=0,
+                                        ),
+                                    ],
                                 ),
                             ],
                         ),
@@ -83,8 +100,14 @@ app.layout = html.Div(
                     id="input-image", data=io_utils.mime_from_img_path(DEFAULT_IMAGE)
                 ),
                 html.Div(
-                    id="footer",
+                    id="sidebar",
                     children=[
+                        html.H1(
+                            id="title",
+                            children=[
+                                "Image processing template made with Dash and scikit-image"
+                            ],
+                        ),
                         html.P(
                             children=[
                                 "This shows how an app for processing images can be made in ~100 lines of code with Dash and scikit-image. You can add your image processing algorithm by modifying this this app, which you can obtain here: ",
@@ -97,6 +120,21 @@ app.layout = html.Div(
                                 " and ",
                                 html.A(
                                     "scikit-image", href="https://scikit-image.org/"
+                                ),
+                                ".",
+                            ]
+                        ),
+                        html.P(
+                            children=[
+                                "Credit: Upload and download icons based on ",
+                                html.A(
+                                    "these",
+                                    href="https://commons.wikimedia.org/wiki/File:Upload_icon_-_Font_Awesome_-_Red.svg",
+                                ),
+                                ". Image of shells originally from ",
+                                html.A(
+                                    "here",
+                                    href="https://commons.wikimedia.org/wiki/File:Euchondrus_septemdentatus_01.JPG",
                                 ),
                                 ".",
                             ]
@@ -137,4 +175,4 @@ def process_image(input_image_data, rotation_slider_value):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server()
