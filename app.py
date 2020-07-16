@@ -170,7 +170,7 @@ def process_image(input_image_data, rotation_slider_value):
     # process the image here...
     im = skimage.transform.rotate(im, rotation_slider_value, resize=True)
 
-    mimestr = io_utils.mime_from_img(im)
+    mimestr = io_utils.mime_from_img(im,format_str='jpeg')
     return (mimestr, mimestr, "Rotation: %.2f\u00B0" % rotation_slider_value)
 
 
